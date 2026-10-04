@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             barra.style.background = `linear-gradient(
-
-                to right, #c99b77 ${porcentaje}%,
+                to right, 
+                #c98677 ${porcentaje}%,
                 transparent ${porcentaje}
             )`;
 
