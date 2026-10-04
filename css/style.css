@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+    background-color: rgb(211, 210, 206);
+    /* background-image: url(../img/fon.jpg); */
+    color: rgb(9, 9, 9);
+    font-family: Arial, sans-serif;
+
+
+      background-size: cover;       
+      background-position: center;   
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.roast {
+    display: flex;
+    gap: 10px;
+}
+
+.roast img {
+    width: 70px;
+    height: 70px;
+}
+
+.barra-carga {
+    width: 500px;
+    height: 25px;
+    border: 2px solid #8b5e3c;
+    border-radius: 15px;
+}
+
+.Simulador-tueste {
+    font-size: 18px;
+}
+
+.roast img {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    animation: aparecer 0.5s ease forwards;
+}
+
+.roast img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.roast img:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.roast img:nth-child(3) {
+    animation-delay: 2.0s;
+}
+
+.roast img:nth-child(4) {
+    animation-delay: 2.5s;
+}
+
+.roast img:nth-child(5) {
+    animation-delay: 3.0s;
+}
+
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
