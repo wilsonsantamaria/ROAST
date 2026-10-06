@@ -21,8 +21,6 @@ body {
 }
 
 
-
-
 main {
     min-height: 100vh;
     display: flex;
@@ -31,6 +29,22 @@ main {
     justify-content: center;
     gap: 30px;
 }
+
+
+
+
+.pantalla-carga {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.pantalla-inicio {
+    display: none;
+}
+
 
 
 .roast {

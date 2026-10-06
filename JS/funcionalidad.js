@@ -3,6 +3,7 @@
 console.log("hola");
 
 
+// esa parte de codigo es la anicion de la carga del a 1 a 100
 document.addEventListener("DOMContentLoaded", () => {
     const barra = document.querySelector(".barra-carga");
     const texto = document.querySelector("p span");
