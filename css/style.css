@@ -4,18 +4,24 @@
     box-sizing: border-box;
 }
 
+
 body {
 
     min-height: 100vh;
     background-color: rgb(211, 210, 206);
-    /* background-image: url(../img/fon.jpg); */
+     background-image: url(../assets/img/descarga\ \(13\).jpg); 
     color: rgb(9, 9, 9);
     font-family: Arial, sans-serif;
+    background-size: cover;       
+    background-position: center;   
 
 
-      background-size: cover;       
-      background-position: center;   
+      /* background: linear-gradient(45deg, rgb(131, 131, 105), rgba(128, 34, 0, 0.895)); */
+
 }
+
+
+
 
 main {
     min-height: 100vh;
@@ -25,6 +31,7 @@ main {
     justify-content: center;
     gap: 30px;
 }
+
 
 .roast {
     display: flex;
@@ -36,6 +43,7 @@ main {
     height: 70px;
 }
 
+
 .barra-carga {
     width: 500px;
     height: 25px;
@@ -43,9 +51,21 @@ main {
     border-radius: 15px;
 }
 
+
 .Simulador-tueste {
     font-size: 18px;
 }
+
+
+.simulador-tueste p {
+    color: white;
+}
+
+
+p {
+    color: white;   
+}
+
 
 .roast img {
     width: 70px;
@@ -86,3 +106,4 @@ main {
         transform: translateY(0);
     }
 }
+
