@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(timer);
 
                 carga.style.display="none";
-                inicio.style.display="block";
+                inicio.style.display="flex";
 
 
             }
@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cargarBarra(4);
 });
+
+
 
 
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,62 +6,67 @@
     <title>Roast</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="JS/funcionalidad.js" defer></script>
-
 </head>
-
 
 <body>
 
     <main>
 
-          <div class="pantalla-carga">
+        <!-- PANTALLA DE CARGA -->
+        <div class="pantalla-carga">
 
+            <div class="roast">
+                <img src="assets/img/R_con_fondo-removebg-preview.png" alt="R">
+                <img src="assets/img/O_grano_sin_fondo-removebg-preview.png" alt="O">
+                <img src="assets/img/A_con_fondo-removebg-preview.png" alt="A">
+                <img src="assets/img/S_con_fondo-removebg-preview.png" alt="S">
+                <img src="assets/img/T_con_fondo-removebg-preview.png" alt="T">
+            </div>
 
+            <div class="barra-carga"></div>
 
-        <div class="roast">
+            <div class="simulador-tueste">
+                <p>Simulador de tueste de café</p>
+            </div>
 
-        <img src="assets/img/R_con_fondo-removebg-preview.png" alt="R">
-        <img src="assets/img/O_grano_sin_fondo-removebg-preview.png" alt="O">
-        <img src="assets/img/A_con_fondo-removebg-preview.png" alt="A">
-        <img src="assets/img/S_con_fondo-removebg-preview.png" alt="S">
-        <img src="assets/img/T_con_fondo-removebg-preview.png" alt="T">
+            <p>Cargando <span>0%</span></p>
 
         </div>
 
+        <!-- PANTALLA DE INICIO -->
+        <div class="pantalla-inicio">
 
-        <div class="barra-carga">
-            
-        </div>
+            <div class="portada">
 
-        <div class="simulador-tueste">
-            <p>Simulador de tueste de cafe</p>
-         
-        </div>
+                <div class="logo-inicio">
+                    
+                    <div class="roast">
+                        <img src="assets/img/R_con_fondo-removebg-preview.png" alt="R">
+                        <img src="assets/img/O_grano_sin_fondo-removebg-preview.png" alt="O">
+                        <img src="assets/img/A_con_fondo-removebg-preview.png" alt="A">
+                        <img src="assets/img/S_con_fondo-removebg-preview.png" alt="S">
+                        <img src="assets/img/T_con_fondo-removebg-preview.png" alt="T">
+                    </div>
+                </div>
 
-           <p>Cargando  <span>10% </span> </p>
+                <p class="lema">Elige tu modo de juego</p>
+
+                <nav class="modos">
+                    <button class="boton boton-principal" type="button">Pregunta</button>
+                    <button class="boton boton-secundario" type="button">Desafío</button>
+                </nav>
+
+            </div>
+
+            <div class="herramientas">
+                <button class="boton-icono" type="button" aria-label="Ajustes">⚙</button>
+                <button class="boton-icono" type="button" aria-label="Ayuda">?</button>
+                <button class="boton-icono" type="button" aria-label="Sonido">🔊</button>
+            </div>
 
         </div>
 
     </main>
-
-
-
-
-       <div class="pantalla-inicio">
-
-        
-            <div class="btn-datos">
-
-                <button class="btn">⚙️</button>
-                <button class="btn">❔</button>
-                <button class="btn"> ▶ </button>
-
-            </div>
-
-
-
-           </div> <!-- cierra pantalla-inicio -->
-    
 
 </body>
 </html>

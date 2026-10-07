@@ -120,19 +120,198 @@ p {
 
 
 
-.btn-datos {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
+
+
+
+
+
+
+/*pantalla de inicio*/
+/* ===== FUENTES ===== */
+@font-face {
+    font-family: "Abril Fatface";
+    src: url("../assets/fonts/abril-fatface-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
-.btn-datos .btn {
-    border: none;
+@font-face {
+    font-family: "Playfair Display";
+    src: url("../assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/fonts/montserrat-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===== COLORES ===== */
+:root {
+    --cafe-oscuro: #3b1f0e;
+    --cafe-medio: #6b3a1f;
+    --cafe-suave: #936e58;
+    --crema: #f2e9dc;
+    --crema-oscura: #e4dacc;
+}
+
+/* ===== PANTALLA DE INICIO ===== */
+.pantalla-inicio {
+    display: none;              /* JS la pone en flex al terminar la carga */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--crema-oscura) 0%, var(--crema) 65%);
+    color: var(--cafe-oscuro);
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+.pantalla-inicio .portada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 20px 18px;
+    text-align: center;
+}
+
+.pantalla-inicio .lema {
+    margin: 4px 0 0;
+    font-size: clamp(11px, 2vw, 15px);
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    text-indent: 0.32em;
+    text-transform: uppercase;
+    color: var(--cafe-medio);
+    margin-top: 18px;
+}
+
+/* ===== BOTONES DE MODO ===== */
+.modos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 38px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 69px;
+    padding: 0 56px;
+    border: 2px solid var(--cafe-oscuro);
+    border-radius: 4px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+    cursor: pointer;
+    box-shadow: 0 9px 22px rgba(59, 31, 14, 0.24);
+    transition: background-color 0.2s ease, color 0.2s ease,
+                border-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton-principal {
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+}
+
+.boton-secundario {
+    background: var(--crema);
+    color: var(--cafe-oscuro);
+}
+
+.boton-principal:hover {
+    background: var(--cafe-medio);
+    border-color: var(--cafe-medio);
+}
+
+.boton-secundario:hover {
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+}
+
+.boton:active {
+    transform: translateY(1px);
+}
+
+/* ===== BOTONES DE HERRAMIENTAS (⚙ ? 🔊) ===== */
+.herramientas {
+    position: fixed;
+    right: 26px;
+    bottom: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.boton-icono {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border: 1px solid var(--cafe-suave);
     border-radius: 50%;
-    height: 40px;   
-    width: 40px;   
+    background: transparent;
+    color: var(--cafe-suave);
     font-size: 18px;
     cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.boton-icono:hover {
+    background: rgba(59, 31, 14, 0.08);
+    border-color: var(--cafe-oscuro);
+    color: var(--cafe-oscuro);
+}
+
+/* ===== ACCESIBILIDAD ===== */
+.boton:focus-visible,.boton-icono:focus-visible {
+    outline: 3px solid var(--cafe-medio);
+    outline-offset: 3px;
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-height: 760px) {
+    .pantalla-inicio .portada {
+        padding-bottom: 96px;
+    }
+}
+
+
+@media (max-width: 560px) {
+    .pantalla-inicio .portada {
+        padding-bottom: 96px;
+    }
+    .modos {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 300px);
+        gap: 16px;
+        margin-top: 36px;
+    }
+    .boton {
+        padding: 0 24px;
+    }
+    .pantalla-inicio .lema {
+        letter-spacing: 0.28em;
+        text-indent: 0.28em;
+    }
+    .herramientas {
+        right: 14px;
+        bottom: 12px;
+        gap: 10px;
+    }
 }
