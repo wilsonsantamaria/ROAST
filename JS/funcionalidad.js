@@ -7,6 +7,8 @@ console.log("hola");
 document.addEventListener("DOMContentLoaded", () => {
     const barra = document.querySelector(".barra-carga");
     const texto = document.querySelector("p span");
+    const carga = document.querySelector(".pantalla-carga");
+    const inicio = document.querySelector(".pantalla-inicio");
 
 
     function cargarBarra(duracionSegundos) {
@@ -20,6 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (porcentaje >= 100) {
                 porcentaje = 100;
                 clearInterval(timer);
+
+                carga.style.display="none";
+                inicio.style.display="block";
+
+
             }
 
             barra.style.background = `linear-gradient(
@@ -87,3 +94,5 @@ function animar(t) {
 }
 
 id = requestAnimationFrame(animar);
+
+
