@@ -98,3 +98,110 @@ function animar(t) {
 id = requestAnimationFrame(animar);
 
 
+// =====================================================================
+// PANTALLA MODO APRENDIZAJE
+// (todo va dentro de una funcion para no chocar con las variables de arriba)
+// =====================================================================
+(function () {
+    const pantallaInicio = document.querySelector(".pantalla-inicio");
+    const pantalla = document.querySelector(".pantalla-aprendizaje");
+    // Boton que abre la pantalla: el que diga "Aprendizaje"; si no existe, el primero de "Elige tu modo de juego"
+    const botonesModo = Array.from(document.querySelectorAll(".modos .boton"));
+    const botonModo = botonesModo.find(function (b) { return /aprendizaje/i.test(b.textContent); }) || botonesModo[0];
+
+    const botonInicio = pantalla.querySelector(".boton-inicio");
+    const botonCancelar = pantalla.querySelector(".boton-cancelar");
+    const botonEnviar = pantalla.querySelector(".boton-enviar");
+    const textoProgreso = pantalla.querySelector(".progreso-texto");
+    const relleno = pantalla.querySelector(".progreso-relleno");
+    const resultado = pantalla.querySelector(".resultado-aprendizaje");
+    const tarjetas = pantalla.querySelectorAll(".tarjeta-pregunta");
+
+    // Respuestas correctas en orden: pregunta 1, 2, 3, 4, 5
+    const respuestasCorrectas = ["B", "C", "B", "C", "B"];
+    const total = tarjetas.length;
+    let enviado = false;
+
+    function abrirPantalla() {
+        reiniciar();
+        pantallaInicio.style.display = "none";
+        pantalla.style.display = "flex";
+        window.scrollTo(0, 0);
+    }
+
+    function volverAlInicio() {
+        pantalla.style.display = "none";
+        pantallaInicio.style.display = "flex";
+        window.scrollTo(0, 0);
+    }
+
+    function contarRespondidas() {
+        return pantalla.querySelectorAll("input[type=radio]:checked").length;
+    }
+
+    function actualizarProgreso() {
+        const respondidas = contarRespondidas();
+        const actual = Math.min(respondidas + 1, total);
+        textoProgreso.textContent = "Pregunta " + actual + " de " + total;
+        relleno.style.width = (actual / total * 100) + "%";
+        botonEnviar.disabled = enviado || respondidas < total;
+    }
+
+    function reiniciar() {
+        enviado = false;
+        pantalla.querySelectorAll("input[type=radio]").forEach(function (radio) {
+            radio.checked = false;
+            radio.disabled = false;
+        });
+        pantalla.querySelectorAll(".opcion").forEach(function (opcion) {
+            opcion.classList.remove("seleccionada", "correcta", "incorrecta", "bloqueada");
+        });
+        resultado.textContent = "";
+        actualizarProgreso();
+    }
+
+    function enviarRespuestas() {
+        if (enviado || contarRespondidas() < total) return;
+        enviado = true;
+        let aciertos = 0;
+
+        tarjetas.forEach(function (tarjeta, i) {
+            const marcada = tarjeta.querySelector("input:checked");
+            const correcta = respuestasCorrectas[i];
+
+            tarjeta.querySelectorAll("input").forEach(function (radio) {
+                radio.disabled = true;
+                radio.closest(".opcion").classList.add("bloqueada");
+            });
+
+            tarjeta.querySelector('input[value="' + correcta + '"]').closest(".opcion").classList.add("correcta");
+
+            if (marcada.value === correcta) {
+                aciertos++;
+            } else {
+                marcada.closest(".opcion").classList.remove("seleccionada");
+                marcada.closest(".opcion").classList.add("incorrecta");
+            }
+        });
+
+        resultado.textContent = "Obtuviste " + aciertos + " de " + total;
+        botonEnviar.disabled = true;
+    }
+
+    // Al elegir una opcion se marca como seleccionada
+    pantalla.addEventListener("change", function (e) {
+        if (!e.target.matches("input[type=radio]")) return;
+        const tarjeta = e.target.closest(".tarjeta-pregunta");
+        tarjeta.querySelectorAll(".opcion").forEach(function (opcion) {
+            opcion.classList.toggle("seleccionada", opcion.contains(e.target));
+        });
+        actualizarProgreso();
+    });
+
+    if (botonModo) botonModo.addEventListener("click", abrirPantalla);
+    botonInicio.addEventListener("click", volverAlInicio);
+    botonCancelar.addEventListener("click", volverAlInicio);
+    botonEnviar.addEventListener("click", enviarRespuestas);
+
+    actualizarProgreso();
+})();

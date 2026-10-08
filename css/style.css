@@ -315,3 +315,355 @@ p {
         gap: 10px;
     }
 }
+
+
+/* =====================================================================
+   PANTALLA MODO APRENDIZAJE
+   ===================================================================== */
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/fonts/montserrat-latin-500-normal.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+.pantalla-aprendizaje {
+    display: none;              /* JS la pone en flex al pulsar el boton del modo */
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--crema);
+    color: var(--cafe-oscuro);
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+/* ----- Barra superior ----- */
+.pantalla-aprendizaje .barra-superior {
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: stretch;
+    padding-left: 10px;
+    background: var(--cafe-oscuro);
+}
+
+.pantalla-aprendizaje .boton-inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 83px;
+    margin-top: 3px;
+    border: none;
+    background: var(--cafe-medio);
+    color: var(--crema);
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pantalla-aprendizaje .boton-inicio:hover {
+    background: var(--cafe-suave);
+}
+
+/* ----- Contenido ----- */
+.pantalla-aprendizaje .contenido-aprendizaje {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 50px 59px 50px;
+}
+
+.pantalla-aprendizaje .encabezado-aprendizaje {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 38px;
+}
+
+.pantalla-aprendizaje h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--cafe-oscuro);
+}
+
+/* ----- Progreso ----- */
+.pantalla-aprendizaje .progreso {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pantalla-aprendizaje .progreso-texto {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--cafe-medio);
+}
+
+.pantalla-aprendizaje .progreso-barra {
+    width: 150px;
+    height: 6px;
+    border-radius: 3px;
+    background: #d9b896;
+    overflow: hidden;
+}
+
+.pantalla-aprendizaje .progreso-relleno {
+    width: 20%;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--cafe-oscuro);
+    transition: width 0.3s ease;
+}
+
+/* ----- Tarjetas de pregunta ----- */
+.pantalla-aprendizaje .preguntas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.pantalla-aprendizaje .tarjeta-pregunta {
+    padding: 20px;
+    border: 1px solid var(--crema-oscura);
+    border-radius: 12px;
+    background: #fdfaf6;
+}
+
+.pantalla-aprendizaje .tarjeta-ancha {
+    grid-column: 1 / -1;
+}
+
+.pantalla-aprendizaje .enunciado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--cafe-oscuro);
+}
+
+.pantalla-aprendizaje .numero {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* ----- Opciones ----- */
+.pantalla-aprendizaje .opciones {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+}
+
+.pantalla-aprendizaje .tarjeta-ancha .opciones {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+}
+
+.pantalla-aprendizaje .opcion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 47px;
+    padding: 8px 12px;
+    border: 1px solid var(--crema-oscura);
+    border-radius: 6px;
+    background: var(--crema);
+    color: var(--cafe-medio);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pantalla-aprendizaje .opcion input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pantalla-aprendizaje .letra {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--cafe-suave);
+    border-radius: 50%;
+    background: #fdfaf6;
+    color: var(--cafe-oscuro);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pantalla-aprendizaje .opcion:hover {
+    border-color: var(--cafe-suave);
+}
+
+.pantalla-aprendizaje .opcion.seleccionada {
+    border-color: var(--cafe-oscuro);
+    background: #ebdcc8;
+    color: var(--cafe-oscuro);
+}
+
+.pantalla-aprendizaje .opcion.seleccionada .letra {
+    border-color: var(--cafe-oscuro);
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+}
+
+.pantalla-aprendizaje .opcion input:focus-visible ~ .letra {
+    outline: 3px solid var(--cafe-medio);
+    outline-offset: 2px;
+}
+
+/* ----- Resultado tras enviar ----- */
+.pantalla-aprendizaje .opcion.correcta {
+    border-color: #4f7a3f;
+    background: #e3ecd9;
+    color: #2f4d25;
+}
+
+.pantalla-aprendizaje .opcion.correcta .letra {
+    border-color: #4f7a3f;
+    background: #4f7a3f;
+    color: #fdfaf6;
+}
+
+.pantalla-aprendizaje .opcion.incorrecta {
+    border-color: #a63d2f;
+    background: #f3dcd7;
+    color: #7a2a20;
+}
+
+.pantalla-aprendizaje .opcion.incorrecta .letra {
+    border-color: #a63d2f;
+    background: #a63d2f;
+    color: #fdfaf6;
+}
+
+.pantalla-aprendizaje .opcion.bloqueada {
+    cursor: default;
+}
+
+/* ----- Botones inferiores ----- */
+.pantalla-aprendizaje .acciones-aprendizaje {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.pantalla-aprendizaje .resultado-aprendizaje {
+    margin-right: auto;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cafe-oscuro);
+}
+
+.pantalla-aprendizaje .boton-cancelar,
+.pantalla-aprendizaje .boton-enviar {
+    height: 50px;
+    padding: 0 35px;
+    border: 1px solid var(--cafe-oscuro);
+    border-radius: 3px;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pantalla-aprendizaje .boton-cancelar {
+    background: transparent;
+    color: var(--cafe-oscuro);
+}
+
+.pantalla-aprendizaje .boton-cancelar:hover {
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+}
+
+.pantalla-aprendizaje .boton-enviar {
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+}
+
+.pantalla-aprendizaje .boton-enviar:hover:not(:disabled) {
+    background: var(--cafe-medio);
+    border-color: var(--cafe-medio);
+}
+
+.pantalla-aprendizaje .boton-enviar:disabled {
+    border-color: #e6d0b9;
+    background: #e6d0b9;
+    color: var(--crema);
+    cursor: not-allowed;
+}
+
+.pantalla-aprendizaje .boton-inicio:focus-visible,
+.pantalla-aprendizaje .boton-cancelar:focus-visible,
+.pantalla-aprendizaje .boton-enviar:focus-visible {
+    outline: 3px solid var(--cafe-medio);
+    outline-offset: 3px;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 900px) {
+    .pantalla-aprendizaje .contenido-aprendizaje {
+        padding: 36px 20px 40px;
+    }
+    .pantalla-aprendizaje h1 {
+        font-size: 30px;
+    }
+    .pantalla-aprendizaje .preguntas {
+        grid-template-columns: 1fr;
+    }
+    .pantalla-aprendizaje .tarjeta-ancha .opciones {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .pantalla-aprendizaje .acciones-aprendizaje {
+        justify-content: stretch;
+    }
+    .pantalla-aprendizaje .resultado-aprendizaje {
+        flex-basis: 100%;
+    }
+    .pantalla-aprendizaje .boton-cancelar,
+    .pantalla-aprendizaje .boton-enviar {
+        flex: 1;
+        padding: 0 12px;
+        font-size: 13px;
+    }
+}
