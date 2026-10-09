@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const texto = document.querySelector("p span");
     const carga = document.querySelector(".pantalla-carga");
     const inicio = document.querySelector(".pantalla-inicio");
+    const barraProgreso = document.querySelector(".barra-progreso");
+
+    const btnAyuda= document.querySelector(".btn-ayuda");
+    const btnInformacion = document.querySelector(".boton-inf");
+    const cerrarP = document.querySelector(".btn-cerrar");
+
+
 
 
     function cargarBarra(duracionSegundos) {
@@ -28,12 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             }
-
-            barra.style.background = `linear-gradient(
-                to right, 
-                #c98677 ${porcentaje}%,
-                transparent ${porcentaje}
-            )`;
+              barraProgreso.style.width = porcentaje + "%";
 
 
  
@@ -41,6 +43,22 @@ document.addEventListener("DOMContentLoaded", () => {
         },
          intervalo);
     }
+
+    btnAyuda.addEventListener("click" ,() =>{
+
+      btnInformacion.style.display="flex";
+
+
+    });
+
+
+    cerrarP.addEventListener("click" , () =>{
+
+      btnInformacion.style.display=("none");
+
+    });
+
+
 
     cargarBarra(4);
 });
@@ -204,4 +222,57 @@ id = requestAnimationFrame(animar);
     botonEnviar.addEventListener("click", enviarRespuestas);
 
     actualizarProgreso();
+})();
+
+
+// =====================================================================
+// VIDEO: boton ▶ de la pantalla de inicio
+// (dentro de una funcion para no chocar con las variables de arriba)
+// =====================================================================
+(function () {
+    const boton = document.querySelector(".btn-sonido");
+    const modal = document.querySelector(".video-modal");
+    if (!boton || !modal) return;
+
+    const marco = modal.querySelector(".video-marco");
+    const reproductor = modal.querySelector(".video-reproductor");
+    const fuente = reproductor.querySelector("source");
+    const cerrar = modal.querySelector(".video-cerrar");
+
+    function abrirVideo() {
+        modal.classList.add("abierto");
+        modal.setAttribute("aria-hidden", "false");
+        cerrar.focus();
+        // Se reproduce solo al abrir (si no lo quieres, borra la siguiente linea)
+        if (marco.classList.contains("con-video")) reproductor.play().catch(function () {});
+    }
+
+    function cerrarVideo() {
+        reproductor.pause();
+        modal.classList.remove("abierto");
+        modal.setAttribute("aria-hidden", "true");
+        boton.focus();
+    }
+
+    boton.addEventListener("click", abrirVideo);
+    cerrar.addEventListener("click", cerrarVideo);
+
+    // clic en el fondo oscuro (fuera del marco) tambien cierra
+    modal.addEventListener("click", function (e) {
+        if (e.target === modal) cerrarVideo();
+    });
+
+    // tecla Esc cierra
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("abierto")) cerrarVideo();
+    });
+
+    // Si el archivo de video existe se muestra; si no, se queda la plantilla "Aqui va tu video"
+    function hayVideo() { marco.classList.add("con-video"); }
+    function noHayVideo() { marco.classList.remove("con-video"); }
+
+    reproductor.addEventListener("loadedmetadata", hayVideo);
+    reproductor.addEventListener("error", noHayVideo);
+    fuente.addEventListener("error", noHayVideo);
+    if (reproductor.readyState >= 1) hayVideo();
 })();

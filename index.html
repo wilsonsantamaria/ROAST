@@ -23,7 +23,14 @@
                 <img src="assets/img/T_con_fondo-removebg-preview.png" alt="T">
             </div>
 
-            <div class="barra-carga"></div>
+            <div class="barra-carga">
+
+                <div class="barra-progreso">
+
+                </div>
+
+
+            </div>
 
             <div class="simulador-tueste">
                 <p>Simulador de tueste de café</p>
@@ -33,13 +40,17 @@
 
         </div>
 
+
+
+
+
         <!-- PANTALLA DE INICIO -->
         <div class="pantalla-inicio">
 
             <div class="portada">
 
                 <div class="logo-inicio">
-                    
+
                     <div class="roast">
                         <img src="assets/img/R_con_fondo-removebg-preview.png" alt="R">
                         <img src="assets/img/O_grano_sin_fondo-removebg-preview.png" alt="O">
@@ -48,6 +59,8 @@
                         <img src="assets/img/T_con_fondo-removebg-preview.png" alt="T">
                     </div>
                 </div>
+
+
 
                 <p class="lema">Elige tu modo de juego</p>
 
@@ -58,13 +71,73 @@
 
             </div>
 
-            <div class="herramientas">
-                <button class="boton-icono" type="button" aria-label="Ajustes">⚙</button>
-                <button class="boton-icono" type="button" aria-label="Ayuda">?</button>
-                <button class="boton-icono" type="button" aria-label="Sonido">🔊</button>
+       <div class="herramientas">
+
+    <button class="boton-icono btn-ajustes" type="button" aria-label="Ajustes">⚙</button>
+    <button class="boton-icono btn-ayuda" type="button" aria-label="Ayuda">?</button>
+    <button class="boton-icono btn-sonido" type="button" aria-label="Sonido">▶</button>
+
+     </div>
+
+
+            <div class="boton-inf">
+                <div class="informacion-sobre-roast">
+
+                    <button class="btn-cerrar" type="button" aria-label="Cerrar">✕</button>
+
+
+
+                    <!-- <article class="tarjeta"> -->
+
+                    <div class="titulos">
+                    <h1>Qué es ROAST?</h1>
+                    </div>
+
+                    <div class="roast-significado">
+                    <p>ROAST es un simulador interactivo de tueste de café diseñado para apoyar el aprendizaje y la práctica del proceso de tostión. La herramienta permite al usuario experimentar de manera controlada con diferentes variables del tueste, como el tiempo y la temperatura, sin necesidad de utilizar café físico durante las etapas iniciales de aprendizaje. De esta manera, ROAST busca reducir las pérdidas de materia prima ocasionadas por errores durante la práctica y facilitar una mejor comprensión de cómo las decisiones tomadas durante el proceso influyen en el resultado final del café. Además, el sistema integra preguntas y actividades prácticas que permiten reforzar los conocimientos adquiridos y desarrollar una mayor familiaridad con el proceso de tueste.</p>
+
+                    </div>
+
+                    <section class="tarjetas">
+                    <article class="tarjeta">
+
+                        
+                    <div class="titulos modoss">
+                    <h3>Modos de juego</h3>
+                    </div>
+
+                    <p>ROAST cuenta con dos modos diseñados para aprender y poner a prueba tus conocimientos sobre el tueste de café. Elige entre Pregunta, para reforzar tus conocimientos, o Desafío, para poner a prueba tus habilidades dentro del simulador.</p>
+
+                    </article>
+
+                    <article class="tarjeta">
+
+                    <div class="titulos cuestionario">
+                    <h3>Pregunta</h3>
+                    </div>
+
+                    <p>Pon a prueba tus conocimientos sobre el café y el proceso de tueste mediante preguntas relacionadas con temperatura, tiempo, tipos de tueste, características del grano y otros conceptos importantes.</p>
+
+                    </article>
+
+
+                    <article class="tarjeta">
+
+                     <div class="titulos desafios">
+                    <h3>Desafío</h3>
+
+                    </div>
+                    <p>Enfréntate a una tarea aleatoria dentro del simulador y demuestra tus habilidades de tueste. Elige entre tres niveles de dificultad: fácil, medio y difícil, y cumple correctamente las condiciones del desafío para superarlo.</p>
+
+                    </article>
+
+                    </section>
+
+
+                </div>
             </div>
 
-        </div>
+        </div> <!-- cierra pantalla-inicio -->
 
         <div class="pantalla-aprendizaje">
 
@@ -224,6 +297,52 @@
                 </div>
 
             </section>
+
+        </div>
+
+        <!-- ===================== VIDEO (se abre con el boton ▶ de la pantalla de inicio) ===================== -->
+        <div class="video-modal" role="dialog" aria-modal="true" aria-label="Video del proceso de tueste" aria-hidden="true">
+
+            <div class="video-marco">
+
+                <div class="video-cabecera">
+                    <div class="video-identidad">
+                        <img class="video-logo" src="assets/img/O_grano_sin_fondo-removebg-preview.png" alt="">
+                        <div class="video-titulos">
+                            <span class="video-etiqueta">ROAST · Video de apoyo</span>
+                            <!-- Cambia aqui el titulo de tu video -->
+                            <span class="video-titulo">El proceso de tueste</span>
+                        </div>
+                    </div>
+                    <button class="video-cerrar" type="button" aria-label="Cerrar video">✕</button>
+                </div>
+
+                <div class="video-pantalla">
+
+                    <!-- Plantilla: se ve mientras NO hay video. Cuando el video carga, se oculta sola. -->
+                    <div class="video-vacio">
+                        <div class="video-vacio-icono">▶</div>
+                        <div class="video-vacio-titulo">Aquí va tu video</div>
+                        <div class="video-vacio-ayuda">Guárdalo como <b>assets/video/tueste.mp4</b></div>
+                    </div>
+
+                    <!-- ============ AQUI VA TU VIDEO ============
+                         Pon tu archivo en la carpeta assets/video/ y escribe su nombre en src.
+                         (Opcional) portada: agrega poster="assets/video/portada.jpg" dentro de <video ...> -->
+                    <video class="video-reproductor" controls playsinline preload="metadata">
+                        <source src="assets/video/tueste.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+
+                </div>
+
+                <div class="video-pie">
+                    <!-- Cambia aqui la descripcion de tu video -->
+                    <span>Descubre cómo se transforma el grano durante el tueste.</span>
+                    <span class="video-pie-nota">Esc para cerrar</span>
+                </div>
+
+            </div>
 
         </div>
 
