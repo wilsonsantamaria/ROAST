@@ -1,11 +1,20 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roast</title>
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="assets/Librerias/GsapAnimaciones/gsap.min.js"></script>
     <script src="JS/funcionalidad.js" defer></script>
+
 </head>
 
 <body>
@@ -14,6 +23,8 @@
 
         <!-- PANTALLA DE CARGA -->
         <div class="pantalla-carga">
+
+            <audio class="sonido-ba" src="assets/audios/sonido-coffe.mp3" ></audio>
 
             <div class="roast">
                 <img src="assets/img/R_con_fondo-removebg-preview.png" alt="R">
@@ -83,7 +94,12 @@
             <div class="boton-inf">
                 <div class="informacion-sobre-roast">
 
-                    <button class="btn-cerrar" type="button" aria-label="Cerrar">✕</button>
+           <header class="encabezado">
+  <button class="btn-cerrar" type="button" aria-label="Cerrar">
+    <span class="icono">✕</span>
+    <span class="texto">SALIR</span>
+  </button>
+</header>
 
 
 
@@ -102,7 +118,7 @@
                     <article class="tarjeta">
 
                         
-                    <div class="titulos modoss">
+                    <div class="titulos">
                     <h3>Modos de juego</h3>
                     </div>
 
@@ -112,7 +128,7 @@
 
                     <article class="tarjeta">
 
-                    <div class="titulos cuestionario">
+                    <div class="titulos ">
                     <h3>Pregunta</h3>
                     </div>
 
@@ -123,7 +139,7 @@
 
                     <article class="tarjeta">
 
-                     <div class="titulos desafios">
+                     <div class="titulos ">
                     <h3>Desafío</h3>
 
                     </div>
@@ -138,6 +154,9 @@
             </div>
 
         </div> <!-- cierra pantalla-inicio -->
+
+
+       
 
     </main>
 
