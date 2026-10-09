@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const texto = document.querySelector("p span");
     const carga = document.querySelector(".pantalla-carga");
     const inicio = document.querySelector(".pantalla-inicio");
+    const barraProgreso = document.querySelector(".barra-progreso");
+
+    const btnAyuda= document.querySelector(".btn-ayuda");
+    const btnInformacion = document.querySelector(".boton-inf");
+    const cerrarP = document.querySelector(".btn-cerrar");
+
+
 
 
     function cargarBarra(duracionSegundos) {
@@ -28,12 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             }
-
-            barra.style.background = `linear-gradient(
-                to right, 
-                #c98677 ${porcentaje}%,
-                transparent ${porcentaje}
-            )`;
+              barraProgreso.style.width = porcentaje + "%";
 
 
  
@@ -41,6 +43,22 @@ document.addEventListener("DOMContentLoaded", () => {
         },
          intervalo);
     }
+
+    btnAyuda.addEventListener("click" ,() =>{
+
+      btnInformacion.style.display="flex";
+
+
+    });
+
+
+    cerrarP.addEventListener("click" , () =>{
+
+      btnInformacion.style.display=("none");
+
+    });
+
+
 
     cargarBarra(4);
 });

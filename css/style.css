@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +12,6 @@ body {
     font-family: Arial, sans-serif;
     background-size: cover;       
     background-position: center;   
-
-      /* background: linear-gradient(121deg, rgb(223, 223, 214), rgba(38, 15, 6, 0.895));  */
-
 }
 
 
@@ -27,8 +25,6 @@ main {
 }
 
 
-
-
 .pantalla-carga {
     display: flex;
     flex-direction: column;
@@ -40,7 +36,6 @@ main {
 .pantalla-inicio {
     display: none;
 }
-
 
 
 .roast {
@@ -59,6 +54,19 @@ main {
     height: 25px;
     border: 2px solid #8b5e3c;
     border-radius: 15px;
+}
+
+
+
+.barra-progreso {
+    width: 0%;
+    height: 100%;
+    background-image: url("../assets/img/Grano-Oscuro-removebg-preview.png");
+    background-size: auto 100%;   
+    background-repeat: repeat-x;  
+    background-color: #3b1f0e;   
+    transition: width 0.1s linear;
+    border-radius: 10PX;
 }
 
 
@@ -117,13 +125,7 @@ p {
     }
 }
 
-
-
-
-
-
-
-
+/*------------------------------------------------------------------------------------------------------------------------*/
 
 
 /*pantalla de inicio*/
@@ -152,6 +154,7 @@ p {
     font-display: swap;
 }
 
+
 /* ===== COLORES ===== */
 :root {
     --cafe-oscuro: #3b1f0e;
@@ -170,6 +173,8 @@ p {
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(135deg, var(--crema-oscura) 0%, var(--crema) 65%);
+    background: linear-gradient(135deg, #d2c1ae 0%, #f5e6d3 100%);
+
     color: var(--cafe-oscuro);
     font-family: "Montserrat", Arial, sans-serif;
 }
@@ -194,6 +199,9 @@ p {
     margin-top: 18px;
 }
 
+
+
+
 /* ===== BOTONES DE MODO ===== */
 .modos {
     display: flex;
@@ -217,8 +225,7 @@ p {
     letter-spacing: 0.075em;
     cursor: pointer;
     box-shadow: 0 9px 22px rgba(59, 31, 14, 0.24);
-    transition: background-color 0.2s ease, color 0.2s ease,
-                border-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease,  border-color 0.2s ease, transform 0.2s ease;
 }
 
 .boton-principal {
@@ -230,6 +237,38 @@ p {
     background: var(--crema);
     color: var(--cafe-oscuro);
 }
+
+/*hacer girar alrededor de mdoos de juego*/
+
+@property --h {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes girar-borde {
+    to { --h: 360deg; }
+}
+
+.boton {
+    border: 3px solid transparent;
+    animation: girar-borde 3s linear infinite;
+}
+
+.boton-principal {
+    background:
+        linear-gradient(var(--cafe-oscuro), var(--cafe-oscuro)) padding-box,
+        conic-gradient(from var(--h),
+         transparent 0%, transparent 55%, #e0a96d 80%,#895e40 100%) border-box;
+}
+
+.boton-secundario {
+    background:
+        linear-gradient(var(--crema), var(--crema)) padding-box,
+        conic-gradient(from var(--h),
+        transparent 0%,transparent 55%, #6b3a1f 80%, #3b1f0e 100%) border-box;
+}
+
 
 .boton-principal:hover {
     background: var(--cafe-medio);
@@ -315,3 +354,157 @@ p {
         gap: 10px;
     }
 }
+
+
+
+/*btn 3 de inicio*/
+
+.boton-inf {
+    display: none;                 /* se encuentra escondido y en js se pone flex cuando dar click*/
+    position: fixed;              
+    inset: 0;                      /* cubre toda la pantalla */
+    z-index: 100;                  
+    background: var(--crema);      
+    align-items: center;        
+    justify-content: center;      
+}
+
+
+.informacion-sobre-roast {
+    position: relative;            /* para ubicar la ✕ dentro de él */
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    padding: 40px 30px;
+    color: var(--cafe-oscuro);
+}
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    color: #fff; /* texto blanco para contraste */
+    cursor: pointer;
+    background: #8b5e3c; /* café oscuro elegante */
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-cerrar:hover {
+    background: #d4af37; /* dorado elegante al pasar el mouse */
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    transform: scale(1.1); /* efecto de crecimiento suave */
+}
+
+
+.informacion-sobre-roast h1 {
+    color:  #3b1f0e;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.informacion-sobre-roast p {
+    color: black;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.informacion-sobre-roast h3{
+    display: flex;
+    justify-content: center;
+}
+
+
+.tarjetas{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 40px;
+   justify-content: center;
+   margin-top: 40px;
+
+}
+
+.tarjeta{
+    background-color :#d2c1ae;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 300px;
+    height: 200px;
+    margin-top: 20px;
+
+  animation: sombraPulse 2.5s ease-in-out infinite;
+}
+
+.tarjeta:nth-child(2) { animation-delay: 0.5s; }
+.tarjeta:nth-child(3) { animation-delay: 1s; }
+.tarjeta:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes sombraPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.25); /* sombra pequeña café */
+    }
+    
+    50% {
+        box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.6),0 0 12px rgba(0,0,0,0.85); 
+    }
+}
+
+.roast-significado {
+    background-color: #d2c1ae;
+    border-radius: 10px;
+    animation: sombr 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes sombr {
+    0% {
+        box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.6),
+                    0 0 12px rgba(0,0,0,0.85);
+    }
+    100% {
+        box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.25);
+    }
+}
+
+
+.roast-significado p {
+    color: black;
+    padding: 15px;
+    text-align: center;
+
+}
+
+
+
+.cuestionario{
+    color:#3f342c;
+}
+
+
+.modoss{
+    color: #895e40;
+}
+
+.desafios{
+    color: #3b1f0e;
+}
+
+.tarjeta:hover{
+    transform: translateY(-8px);
+    cursor: pointer;
+}
+
+
