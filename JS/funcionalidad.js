@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 carga.style.display = "none";
                 inicio.style.display = "flex";
+                crearHumo();
             }
 
             barraProgreso.style.width = porcentaje + "%";
@@ -63,12 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // donde me permite darle como la aparicio a las letras de roast tiempo
     gsap.from(".pantalla-carga .roast img", {
     opacity: 0,
     y: 15,
     duration: 0.5,
     stagger: 0.5
 });
+
 
 
     cargarBarra(4);
@@ -123,3 +126,55 @@ function animar(t) {
 }
 
 id = requestAnimationFrame(animar);
+
+
+
+
+
+// VIDEO: boton ▶ de la pantalla de inicio
+
+(function () {
+    const boton = document.querySelector(".btn-sonido");
+    const modal = document.querySelector(".video-modal");
+    if (!boton || !modal) return;
+
+    const marco = modal.querySelector(".video-marco");
+    const reproductor = modal.querySelector(".video-reproductor");
+    const fuente = reproductor.querySelector("source");
+    const cerrar = modal.querySelector(".video-cerrar");
+
+    function abrirVideo() {
+        modal.classList.add("abierto");
+        modal.setAttribute("aria-hidden", "false");
+        cerrar.focus();
+        
+        // Se reproduce solo al abrir 
+        if (marco.classList.contains("con-video")) reproductor.play().catch(function () {});
+    }
+
+    function cerrarVideo() {
+        reproductor.pause();
+        modal.classList.remove("abierto");
+        modal.setAttribute("aria-hidden", "true");
+        boton.focus();
+    }
+
+    boton.addEventListener("click", abrirVideo);
+    cerrar.addEventListener("click", cerrarVideo);
+
+   
+
+    // tecla Esc cierra
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("abierto")) cerrarVideo();
+    });
+
+
+    function hayVideo() { marco.classList.add("con-video"); }
+    function noHayVideo() { marco.classList.remove("con-video"); }
+
+    reproductor.addEventListener("loadedmetadata", hayVideo);
+    reproductor.addEventListener("error", noHayVideo);
+    fuente.addEventListener("error", noHayVideo);
+    if (reproductor.readyState >= 1) hayVideo();
+})();

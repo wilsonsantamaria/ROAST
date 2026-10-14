@@ -105,6 +105,7 @@ p {
     min-height: 100vh;
     background: linear-gradient(135deg, var(--crema-oscura) 0%, var(--crema) 65%);
     background: linear-gradient(135deg, #d2c1ae 0%, #f5e6d3 100%);
+    background-color: #000;
 
     color: var(--cafe-oscuro);
     font-family: "Montserrat", Arial, sans-serif;
@@ -442,3 +443,254 @@ p {
 }
 
 
+
+
+
+
+/*lo hizo joseph*/
+
+
+/* =====================================================================
+   VIDEO (se abre con el boton ▶ de la pantalla de inicio)
+   ===================================================================== */
+
+.video-modal {
+    display: none;                 /* JS le agrega la clase "abierto" al hacer clic en ▶ */
+    position: fixed;
+    inset: 0;
+    z-index: 110;                  /* por encima del panel de informacion (100) */
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 50% 40%, rgba(59, 31, 14, 0.82), rgba(20, 10, 0, 0.94));
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+.video-modal.abierto {
+    display: flex;
+    animation: video-aparece 0.3s ease;
+}
+
+@keyframes video-aparece {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes video-sube {
+    from { opacity: 0; transform: translateY(18px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ----- Marco: madera de cafe + filete dorado ----- */
+.video-marco {
+    position: relative;
+    width: min(100%, 960px);
+    max-height: 100%;
+    padding: 16px 18px 14px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #6b3a1f 0%, #3b1f0e 55%, #2a1508 100%);
+    box-shadow:
+        0 0 0 2px #e0a96d,
+        0 0 0 6px rgba(224, 169, 109, 0.18),
+        0 30px 70px rgba(0, 0, 0, 0.55),
+        inset 0 0 0 1px rgba(242, 233, 220, 0.14);
+    animation: video-sube 0.45s ease both;
+}
+
+/* ----- Cabecera ----- */
+.video-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 2px 14px;
+}
+
+.video-identidad {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.video-logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.video-titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.video-etiqueta {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #e0a96d;
+}
+
+.video-titulo {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--crema);
+}
+
+.video-cerrar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #8b5e3c;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.video-cerrar:hover {
+    background: #d4af37;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    transform: scale(1.1);
+}
+
+/* ----- Pantalla del video (16:9) con paspartu crema ----- */
+.video-pantalla {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #140a00;
+    outline: 3px solid var(--crema);
+    outline-offset: 0;
+    box-shadow: 0 0 0 7px rgba(0, 0, 0, 0.35);
+}
+
+.video-reproductor {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+    visibility: hidden;            /* se muestra cuando el video existe */
+}
+
+.video-marco.con-video .video-reproductor {
+    visibility: visible;
+}
+
+/* ----- Plantilla: se ve mientras todavia no hay video ----- */
+.video-vacio {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 20px;
+    text-align: center;
+    color: var(--crema);
+    background:
+        radial-gradient(circle at 30% 25%, rgba(224, 169, 109, 0.22), transparent 55%),
+        radial-gradient(circle at 75% 80%, rgba(137, 94, 64, 0.35), transparent 50%),
+        #1b0d03;
+}
+
+
+.video-marco.con-video .video-vacio {
+    display: none;
+}
+
+.video-vacio-icono {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border: 2px solid #e0a96d;
+    border-radius: 50%;
+    padding-left: 6px;             /* centra visualmente el triangulo */
+    font-size: 32px;
+    color: #e0a96d;
+}
+
+.video-vacio-titulo {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.video-vacio-ayuda {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: rgba(242, 233, 220, 0.75);
+}
+
+.video-vacio-ayuda b {
+    color: #e0a96d;
+    font-weight: 500;
+}
+
+/* ----- Pie ----- */
+.video-pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 2px 0;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: rgba(242, 233, 220, 0.82);
+}
+
+.video-pie-nota {
+    flex-shrink: 0;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #e0a96d;
+}
+
+.video-cerrar:focus-visible {
+    outline: 3px solid #e0a96d;
+    outline-offset: 3px;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 600px) {
+    .video-modal {
+        padding: 12px;
+    }
+    .video-marco {
+        padding: 12px 12px 10px;
+        border-radius: 14px;
+    }
+    .video-titulo {
+        font-size: 17px;
+    }
+    .video-etiqueta,
+    .video-pie-nota {
+        display: none;
+    }
+    .video-logo {
+        width: 32px;
+        height: 32px;
+    }
+    .video-vacio-icono {
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+    }
+    .video-vacio-titulo {
+        font-size: 19px;
+    }
+}
