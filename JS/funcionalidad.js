@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 carga.style.display = "none";
                 inicio.style.display = "flex";
-                crearHumo();
+
             }
 
             barraProgreso.style.width = porcentaje + "%";
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    //  MODAL DE INFORMACIÓN 
+    //  INFORMACIÓN 
     btnAyuda.addEventListener("click", () => {
         btnInformacion.style.display = "flex";
     });
@@ -72,10 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
     stagger: 0.5
 });
 
-
-
     cargarBarra(4);
 });
+
+
+
 
 
 //  CHISPAS 
