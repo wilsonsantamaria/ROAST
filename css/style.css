@@ -333,7 +333,6 @@ p {
     align-items: center;     
     cursor: pointer;
     color: #ffffff;      
-    background-origin: 9px;
     letter-spacing: 2px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -396,7 +395,9 @@ p {
 .tarjeta:nth-child(4) { animation-delay: 1.5s; }
 
 @keyframes sombraPulse {
-    0%, 100% {
+    0%,
+    
+  100% {
         box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.25); /* sombra pequeña café */
     }
     
@@ -694,3 +695,8 @@ p {
         font-size: 19px;
     }
 }
+
+
+
+
+

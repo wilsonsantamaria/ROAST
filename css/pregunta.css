@@ -1,0 +1,21 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+        background-color: beige;
+
+
+}
+
+.contenido{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+
+}

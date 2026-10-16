@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sonidoBarra = document.querySelector(".sonido-ba");
 
+    
     //  CARGA DE 0 A 100 
     function cargarBarra(duracionSegundos) {
         let porcentaje = 0;
@@ -73,6 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
     cargarBarra(4);
+
+
+
+    const botonPregunta = document.querySelector('.boton-principal');
+
+    if (botonPregunta) {
+        botonPregunta.addEventListener('click', () => {
+            window.location.href = 'contenido/pantallaPregunta.html';
+        });
+    }
 });
 
 
@@ -97,16 +108,16 @@ function animar(t) {
     ctx.fillStyle = "rgba(20, 10, 0, 0.25)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.globalCompositeOperation = "lighter";
+    //ctx.globalCompositeOperation = "lighter";
 
     for (let i = 0; i < 4; i++) {
         chispas.push({
             x: Math.random() * canvas.width,
             y: canvas.height + 10,
-            vx: (Math.random() - 0.5) * 1.5,
-            vy: -(Math.random() * 3 + 1.5),
-            r: Math.random() * 4 + 2,
-            h: 10 + Math.random() * 30,
+            vx: (Math.random() - 0.5) * 1.5, // velocidad horizontal
+            vy: -(Math.random() * 3 + 1.5), // velocidad vertical hacia arriba
+            r: Math.random() * 4 + 2,    // radio inicial de la chispa
+            h: 10 + Math.random() * 30, // tono de color (matiz)
         });
     }
 
